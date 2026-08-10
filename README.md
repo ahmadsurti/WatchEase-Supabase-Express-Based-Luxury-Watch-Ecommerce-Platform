@@ -200,6 +200,4 @@ The biggest takeaway: **Understand the complete system flow before adding code**
 ## License
 
 This project is licensed under the **Apache License 2.0**. See [LICENSE](LICENSE) for the full text. Attribution details are in [NOTICE](NOTICE).
-
 Licensed under the [Apache License, Version 2.0](LICENSE).
-
