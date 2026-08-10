@@ -343,7 +343,7 @@ async function doCheckout() {
                 .eq('order_id', order.id)
 
             // Buyer confirmation email
-            await fetch('/api/send-order-email', {
+            await fetch(`${window.location.origin}/api/send-order-email`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
@@ -367,7 +367,7 @@ async function doCheckout() {
                 if (giftOrders && giftOrders.length > 0) {
                     for (const gift of giftOrders) {
                         if (gift.recipient_email) {
-                            await fetch('/api/send-gift-teaser', {
+                            await fetch(`${window.location.origin}/api/send-gift-teaser`, {
                                 method: 'POST',
                                 headers: { 'Content-Type': 'application/json' },
                                 body: JSON.stringify({
