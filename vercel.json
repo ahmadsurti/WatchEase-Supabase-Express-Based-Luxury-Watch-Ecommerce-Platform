@@ -1,31 +1,5 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "api/send-order-email.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "api/send-gift-teaser.js",
-      "use": "@vercel/node"
-    },
-    {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/api/send-order-email",
-      "dest": "/api/send-order-email.js"
-    },
-    {
-      "src": "/api/send-gift-teaser",
-      "dest": "/api/send-gift-teaser.js"
-    },
-    {
-      "src": "/(.*)",
-      "dest": "/$1"
-    }
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/$1" }
   ]
 }
