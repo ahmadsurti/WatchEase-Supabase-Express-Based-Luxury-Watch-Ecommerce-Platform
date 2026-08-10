@@ -1,0 +1,773 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   WatchEase — Dark Mode
+   Applied via <body class="dark">
+   Persisted in localStorage key: "we-theme"
+═══════════════════════════════════════════════════════════════════════════ */
+
+/* ── Transition all colour changes smoothly ── */
+body.dark,
+body.dark *:not(video):not(canvas):not(.dial-glass):not(.dial-glass *) {
+    transition:
+        background-color 0.35s ease,
+        background       0.35s ease,
+        color            0.35s ease,
+        border-color     0.35s ease,
+        box-shadow       0.35s ease !important;
+}
+
+/* ══════════════════════════════════════════
+   BASE
+══════════════════════════════════════════ */
+body.dark {
+    background-color: #0e0e0e !important;
+    color: #e8e8e8 !important;
+}
+
+/* ══════════════════════════════════════════
+   NAVBAR
+══════════════════════════════════════════ */
+body.dark .wn-bar {
+    background: rgba(14, 14, 14, 0.75) !important;
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.04) 0%,
+            rgba(255,255,255,0.01) 40%,
+            rgba(0,0,0,0.08) 70%,
+            rgba(255,255,255,0.02) 100%
+        ) !important;
+    border-bottom-color: rgba(255,255,255,0.07) !important;
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.06),
+        0 2px 32px rgba(0,0,0,0.4) !important;
+}
+
+body.dark .wn-bar--scrolled {
+    background: rgba(14, 14, 14, 0.92) !important;
+}
+
+body.dark .wn-brand,
+body.dark .wn-links a,
+body.dark .wn-cart,
+body.dark .wn-greeting {
+    color: rgba(255,255,255,0.88) !important;
+}
+
+body.dark .wn-links a:hover {
+    color: #fff !important;
+    background: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .wn-btn-ghost {
+    color: rgba(255,255,255,0.82) !important;
+    background: rgba(255,255,255,0.07) !important;
+    border-color: rgba(255,255,255,0.14) !important;
+}
+body.dark .wn-btn-ghost:hover {
+    background: rgba(255,255,255,0.13) !important;
+}
+
+body.dark .wn-btn-fill {
+    background: #e5b3a3 !important;
+    color: #121212 !important;
+    border-color: #e5b3a3 !important;
+}
+
+body.dark .wn-btn-logout {
+    color: rgba(255,255,255,0.82) !important;
+    background: rgba(255,255,255,0.07) !important;
+    border-color: rgba(255,255,255,0.14) !important;
+}
+body.dark .wn-btn-logout:hover {
+    background: rgba(255,255,255,0.13) !important;
+}
+
+body.dark .wn-hamburger span {
+    background: rgba(255,255,255,0.88) !important;
+}
+
+body.dark .wn-drawer {
+    background: rgba(14, 14, 14, 0.95) !important;
+    background-image: none !important;
+    border-top-color: rgba(255,255,255,0.07) !important;
+    border-bottom-color: rgba(255,255,255,0.07) !important;
+}
+
+body.dark .wn-drawer a,
+body.dark .wn-drawer button {
+    color: rgba(255,255,255,0.82) !important;
+    border-bottom-color: rgba(255,255,255,0.07) !important;
+}
+
+body.dark .wn-drawer a:hover,
+body.dark .wn-drawer button:hover {
+    color: #fff !important;
+}
+
+/* ── Theme toggle button ── */
+.wn-theme-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--wn-text);
+    transition: background 0.2s, color 0.2s;
+    flex-shrink: 0;
+    padding: 0;
+}
+.wn-theme-btn:hover {
+    background: rgba(0,0,0,0.06);
+}
+
+.wn-theme-btn svg {
+    width: 20px;
+    height: 20px;
+    display: block;
+}
+
+/* Bulb-off icon shown in light mode, bulb-on in dark mode */
+.wn-theme-btn .icon-bulb-off { display: block; }
+.wn-theme-btn .icon-bulb-on  { display: none;  }
+
+body.dark .wn-theme-btn .icon-bulb-off { display: none;  }
+body.dark .wn-theme-btn .icon-bulb-on  { display: block; }
+
+/* Drawer theme row */
+.wn-drawer-theme {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 0.95rem;
+    color: var(--wn-text);
+}
+
+/* ══════════════════════════════════════════
+   HOME PAGE
+══════════════════════════════════════════ */
+body.dark .editorial {
+    background: #161616 !important;
+}
+
+body.dark .editorial-features-col {
+    background: #1a1a1a !important;
+}
+
+body.dark .editorial-heading {
+    color: #e8e8e8 !important;
+}
+
+body.dark .editorial-sub {
+    color: rgba(232,232,232,0.55) !important;
+}
+
+body.dark .e-tile {
+    background: #242424 !important;
+    border-color: rgba(255,255,255,0.07) !important;
+}
+
+body.dark .e-tile h4 {
+    color: #e8e8e8 !important;
+}
+
+body.dark .e-tile p {
+    color: rgba(232,232,232,0.55) !important;
+}
+
+body.dark .btn-editorial {
+    background: #e5b3a3 !important;
+    color: #121212 !important;
+}
+
+body.dark .story-teaser {
+    background: #161616 !important;
+}
+
+/* New arrivals section */
+body.dark .section-padding {
+    background: #0e0e0e !important;
+}
+
+body.dark .watch-card {
+    background: #1a1a1a !important;
+    border-color: rgba(255,255,255,0.07) !important;
+    color: #e8e8e8 !important;
+}
+
+body.dark .watch-card:hover {
+    background: #222 !important;
+    border-color: rgba(229,179,163,0.3) !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4) !important;
+}
+
+/* Home product cards */
+body.dark .img-container {
+    background-color: #1e1e1e !important;
+}
+
+body.dark .product-card:hover .img-container {
+    background-color: #252525 !important;
+}
+
+body.dark .style-tag {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .product-title {
+    color: #e8e8e8 !important;
+}
+
+body.dark .product-price {
+    color: rgba(232,232,232,0.6) !important;
+}
+
+/* ══════════════════════════════════════════
+   COLLECTION PAGES (men + women)
+══════════════════════════════════════════ */
+body.dark .filter-bar {
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .filter-btn {
+    color: rgba(232,232,232,0.5) !important;
+}
+
+body.dark .filter-btn:hover {
+    color: #e8e8e8 !important;
+    background: rgba(255,255,255,0.06) !important;
+}
+
+body.dark .filter-btn.active {
+    color: #e8e8e8 !important;
+    background: rgba(255,255,255,0.1) !important;
+}
+
+body.dark .price-select {
+    background-color: #1a1a1a !important;
+    color: rgba(232,232,232,0.7) !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23aaa' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E") !important;
+}
+
+/* Collection product cards — image zone */
+body.dark .product-card {
+    background: #1a1a1a !important;
+    border-color: rgba(255,255,255,0.07) !important;
+}
+
+body.dark .product-card .img-container,
+body.dark .product-card .img-container {
+    background-color: #1e1e1e !important;
+}
+
+/* Women's overrides in dark */
+body.dark.women-page .product-card {
+    border-color: rgba(229,179,163,0.1) !important;
+}
+
+/* ── Fix: restore transform transitions killed by the blanket !important rule ── */
+/* The global dark-mode transition rule overrides "transition" wholesale, stripping
+   out the transform easing on image zoom and the glass-button slide-up.
+   These rules add transform back explicitly so hover effects stay smooth. */
+body.dark .img-container img {
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+body.dark .card-glass-btn {
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1) !important;
+}
+
+/* ── Fix: remove hover glow/shadow on collection product cards in dark mode ── */
+body.dark .product-card:hover,
+body.dark.women-page .product-card:hover {
+    box-shadow: none !important;
+}
+
+body.dark .collection-eyebrow {
+    color: #e5b3a3 !important;
+}
+
+body.dark .ct-serif,
+body.dark .ct-offbit {
+    color: #e8e8e8 !important;
+}
+
+/* ══════════════════════════════════════════
+   PRODUCT PAGE
+══════════════════════════════════════════ */
+body.dark .main-img-holder {
+    background-color: #1a1a1a !important;
+}
+
+body.dark .breadcrumb-custom {
+    color: rgba(232,232,232,0.4) !important;
+}
+
+body.dark .breadcrumb-custom a {
+    color: rgba(232,232,232,0.7) !important;
+}
+
+body.dark .product-title-large {
+    color: #e8e8e8 !important;
+}
+
+body.dark .specs-grid {
+    border-top-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .spec-item p {
+    color: #e8e8e8 !important;
+}
+
+body.dark .btn-gift {
+    border-color: rgba(255,255,255,0.25) !important;
+    color: #e8e8e8 !important;
+}
+
+body.dark .btn-gift:hover {
+    background: rgba(255,255,255,0.1) !important;
+    color: #fff !important;
+}
+
+body.dark .reviews-section {
+    border-top-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .review-card {
+    background: #1a1a1a !important;
+    border-color: rgba(255,255,255,0.07) !important;
+}
+
+body.dark .review-card--own {
+    background: #1e1610 !important;
+    border-color: rgba(229,179,163,0.3) !important;
+}
+
+body.dark .reviewer-name {
+    color: #e8e8e8 !important;
+}
+
+body.dark .rv-textarea {
+    background: #1a1a1a !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #e8e8e8 !important;
+}
+
+body.dark .rv-textarea:focus {
+    border-color: #e5b3a3 !important;
+    box-shadow: 0 0 0 3px rgba(229,179,163,0.12) !important;
+}
+
+body.dark .rv-textarea::placeholder {
+    color: rgba(232,232,232,0.25) !important;
+}
+
+body.dark .rv-btn-submit {
+    background: #e5b3a3 !important;
+    color: #121212 !important;
+}
+
+body.dark .rv-btn-submit:hover {
+    background: #d4957f !important;
+}
+
+body.dark .rv-form-divider {
+    background: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .rv-btn-confirm-no {
+    border-color: rgba(255,255,255,0.12) !important;
+    color: rgba(232,232,232,0.6) !important;
+}
+
+body.dark .rv-btn-confirm-no:hover {
+    background: #242424 !important;
+    color: #e8e8e8 !important;
+}
+
+body.dark .rv-gate-msg {
+    color: rgba(232,232,232,0.5) !important;
+}
+
+body.dark .rv-gate-msg a {
+    color: #e5b3a3 !important;
+}
+
+/* ══════════════════════════════════════════
+   CART PAGE
+══════════════════════════════════════════ */
+body.dark .cart-header h1 {
+    color: #e8e8e8 !important;
+}
+
+body.dark .cart-item {
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .item-image {
+    background: #1a1a1a !important;
+}
+
+body.dark .item-details h3 {
+    color: #e8e8e8 !important;
+}
+
+body.dark .quantity-control {
+    border-color: rgba(255,255,255,0.12) !important;
+}
+
+body.dark .qty-btn {
+    color: rgba(232,232,232,0.7) !important;
+}
+
+body.dark .summary-card {
+    background: #1a1a1a !important;
+}
+
+body.dark .summary-card h2 {
+    color: #e8e8e8 !important;
+}
+
+body.dark .summary-row {
+    color: rgba(232,232,232,0.55) !important;
+}
+
+body.dark .summary-total {
+    border-top-color: rgba(255,255,255,0.1) !important;
+    color: #e8e8e8 !important;
+}
+
+body.dark .btn-checkout {
+    background-color: #e5b3a3 !important;
+    color: #121212 !important;
+}
+
+/* ══════════════════════════════════════════
+   PROFILE PAGE
+══════════════════════════════════════════ */
+body.dark .profile-header {
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .profile-eyebrow {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .profile-title {
+    color: #e8e8e8 !important;
+}
+
+body.dark .profile-email {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .profile-tabs {
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .profile-tab {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .profile-tab:hover {
+    color: #e8e8e8 !important;
+}
+
+body.dark .profile-tab--active {
+    color: #e8e8e8 !important;
+    border-bottom-color: #e8e8e8 !important;
+}
+
+body.dark .order-card {
+    border-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .order-card-head {
+    background: #1a1a1a !important;
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .order-id {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .order-date,
+body.dark .order-total {
+    color: #e8e8e8 !important;
+}
+
+body.dark .order-item-row {
+    border-bottom-color: rgba(255,255,255,0.07) !important;
+}
+
+body.dark .order-item-img {
+    background: #1e1e1e !important;
+}
+
+body.dark .order-item-name {
+    color: #e8e8e8 !important;
+}
+
+body.dark .order-item-meta {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .form-section-label {
+    color: rgba(232,232,232,0.45) !important;
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .pf-group label {
+    color: rgba(232,232,232,0.7) !important;
+}
+
+body.dark .pf-group input {
+    background: #1a1a1a !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #e8e8e8 !important;
+}
+
+body.dark .pf-group input:focus {
+    border-color: #e5b3a3 !important;
+    box-shadow: 0 0 0 3px rgba(229,179,163,0.12) !important;
+}
+
+body.dark .pf-group input[readonly] {
+    background: #141414 !important;
+    color: rgba(232,232,232,0.35) !important;
+}
+
+body.dark .pf-group input::placeholder {
+    color: rgba(232,232,232,0.2) !important;
+}
+
+body.dark .pf-btn-save {
+    background: #e5b3a3 !important;
+    color: #121212 !important;
+}
+
+body.dark .pf-btn-save:hover {
+    background: #d4957f !important;
+}
+
+body.dark .profile-cta {
+    background: #e5b3a3 !important;
+    color: #121212 !important;
+}
+
+body.dark .wl-img {
+    background: #1a1a1a !important;
+}
+
+body.dark .wl-meta {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .wl-name {
+    color: #e8e8e8 !important;
+}
+
+body.dark .wl-price {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .wl-btn-cart {
+    background: #e5b3a3 !important;
+    color: #121212 !important;
+}
+
+body.dark .wl-btn-cart:hover {
+    background: #d4957f !important;
+}
+
+body.dark .wl-btn-remove {
+    border-color: rgba(255,255,255,0.12) !important;
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .wishlist-card {
+    border-bottom-color: rgba(255,255,255,0.07) !important;
+}
+
+body.dark .panel-spinner {
+    border-color: rgba(255,255,255,0.1) !important;
+    border-top-color: #e8e8e8 !important;
+}
+
+/* ══════════════════════════════════════════
+   GIFT PAGE
+══════════════════════════════════════════ */
+body.dark .gift-header {
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .gift-eyebrow {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .gift-title {
+    color: #e8e8e8 !important;
+}
+
+body.dark .gift-subtitle {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .gift-preview {
+    background: #1a1a1a !important;
+}
+
+body.dark .gift-preview-img {
+    background: #242424 !important;
+}
+
+body.dark .gift-preview-name {
+    color: #e8e8e8 !important;
+}
+
+body.dark .gift-preview-price {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .gift-section-label {
+    color: rgba(232,232,232,0.45) !important;
+    border-bottom-color: rgba(255,255,255,0.08) !important;
+}
+
+body.dark .gf-group label {
+    color: rgba(232,232,232,0.7) !important;
+}
+
+body.dark .gf-group input,
+body.dark .gf-group textarea {
+    background: #1a1a1a !important;
+    border-color: rgba(255,255,255,0.12) !important;
+    color: #e8e8e8 !important;
+}
+
+body.dark .gf-group input:focus,
+body.dark .gf-group textarea:focus {
+    border-color: #e5b3a3 !important;
+    box-shadow: 0 0 0 3px rgba(229,179,163,0.12) !important;
+}
+
+body.dark .gf-group input::placeholder,
+body.dark .gf-group textarea::placeholder {
+    color: rgba(232,232,232,0.2) !important;
+}
+
+body.dark .gift-teaser-check {
+    background: #1a1a1a !important;
+    border-color: rgba(255,255,255,0.1) !important;
+}
+
+body.dark .gift-teaser-check:hover {
+    border-color: #e5b3a3 !important;
+    background: #1e1610 !important;
+}
+
+body.dark .gift-check-box {
+    background: #242424 !important;
+    border-color: rgba(255,255,255,0.15) !important;
+}
+
+body.dark .gift-check-text {
+    color: rgba(232,232,232,0.75) !important;
+}
+
+body.dark .gf-btn-submit {
+    background: #e5b3a3 !important;
+    color: #121212 !important;
+}
+
+body.dark .gf-btn-submit:hover {
+    background: #d4957f !important;
+}
+
+/* ══════════════════════════════════════════
+   ABOUT PAGE
+══════════════════════════════════════════ */
+body.dark .about-hero {
+    background-color: #141414 !important;
+}
+
+body.dark .ah-line-serif,
+body.dark .ah-line-offbit {
+    color: #e8e8e8 !important;
+}
+
+body.dark .ah-sub {
+    color: rgba(232,232,232,0.5) !important;
+}
+
+body.dark .chronicle {
+    background: #0e0e0e !important;
+}
+
+body.dark .scene-text {
+    color: rgba(232,232,232,0.8) !important;
+}
+
+body.dark .scene-text--italic {
+    color: rgba(232,232,232,0.6) !important;
+}
+
+body.dark .scene-text--small {
+    color: rgba(232,232,232,0.45) !important;
+}
+
+body.dark .scene-pull {
+    color: #e8e8e8 !important;
+}
+
+body.dark .scene::after {
+    border-color: #0e0e0e !important;
+}
+
+body.dark .founder-img {
+    background-color: #1a1a1a !important;
+}
+
+body.dark .founder-card:hover .founder-img {
+    background-color: #242424 !important;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.5) !important;
+}
+
+body.dark .founder-name {
+    color: #e8e8e8 !important;
+}
+
+/* ══════════════════════════════════════════
+   THANK YOU PAGE — already dark, light-mode override
+══════════════════════════════════════════ */
+/* thankyou is dark by default — no changes needed in dark mode */
+
+/* ══════════════════════════════════════════
+   FOOTER (shared, dark by default)
+══════════════════════════════════════════ */
+/* Footer is already dark — no overrides needed */
+
+/* ══════════════════════════════════════════
+   AUTH PAGE
+══════════════════════════════════════════ */
+/* Auth page is already dark on the right panel — left panel needs update */
+body.dark .left-section {
+    background-color: #1a1a1a !important;
+}
+
+body.dark .brand {
+    color: #e8e8e8 !important;
+}
+
+/* ══════════════════════════════════════════
+   SCROLLBAR IN DARK MODE
+══════════════════════════════════════════ */
+body.dark::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}

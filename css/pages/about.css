@@ -1,0 +1,409 @@
+/* ─────────────────────────────────────────────
+   WatchEase — About / The Chronicle
+   Global vars, font-faces declared in navbar.css
+───────────────────────────────────────────── */
+
+/* ── Utility classes ── */
+.offbit { font-family: 'OffBit', monospace !important; }
+.neue   { font-family: 'NeuePower', sans-serif !important; }
+
+/* ── Base ── */
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: var(--primary-dark);
+    line-height: 1.7;
+}
+h1, h2, h3, .serif {
+    font-family: 'Lora', serif;
+}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.about-hero {
+    min-height: 92vh;
+    background-color: var(--soft-cream);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 120px 2rem 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Faint watermark number behind hero */
+.about-hero::before {
+    content: '01';
+    font-family: 'OffBit', monospace;
+    font-size: clamp(18rem, 40vw, 32rem);
+    color: rgba(0,0,0,0.04);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    line-height: 1;
+    user-select: none;
+}
+
+.ah-eyebrow {
+    font-family: 'OffBit', monospace;
+    font-size: 0.7rem;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--rose-gold);
+    margin-bottom: 2rem;
+}
+
+.ah-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+    margin-bottom: 2rem;
+}
+
+.ah-title-line {
+    display: block;
+    line-height: 1.05;
+}
+
+.ah-line-serif {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(3rem, 8vw, 6rem);
+    color: var(--primary-dark);
+}
+
+.ah-line-offbit {
+    font-family: 'OffBit', monospace;
+    font-size: clamp(1.6rem, 4vw, 3rem);
+    color: var(--primary-dark);
+    letter-spacing: -0.02em;
+}
+
+.ah-sub {
+    font-size: 1.1rem;
+    color: var(--text-muted);
+    font-weight: 300;
+    max-width: 520px;
+    margin: 0 auto 3rem;
+    font-family: 'Inter', sans-serif;
+}
+
+.ah-scroll-hint {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+    position: absolute;
+    bottom: 2.5rem;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.ah-scroll-hint span {
+    font-family: 'OffBit', monospace;
+    font-size: 0.6rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.ah-scroll-line {
+    width: 1px;
+    height: 48px;
+    background: linear-gradient(to bottom, var(--rose-gold), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}
+
+@keyframes scrollPulse {
+    0%, 100% { opacity: 0.4; transform: scaleY(1); }
+    50%       { opacity: 1;   transform: scaleY(1.15); }
+}
+
+/* ══════════════════════════════════════════
+   CHRONICLE TIMELINE
+══════════════════════════════════════════ */
+.chronicle {
+    position: relative;
+    padding: 100px 0 60px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+/* Vertical spine line */
+.chronicle-spine {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 1px;
+    background: linear-gradient(
+        to bottom,
+        transparent 0%,
+        var(--rose-gold) 8%,
+        var(--rose-gold) 92%,
+        transparent 100%
+    );
+    pointer-events: none;
+}
+
+/* ── Scene block ── */
+.scene {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0 4rem;
+    padding: 60px 2rem;
+    position: relative;
+    align-items: start;
+}
+
+/* Dot on the spine */
+.scene::after {
+    content: '';
+    position: absolute;
+    top: 72px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: var(--rose-gold);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 1px var(--rose-gold);
+    z-index: 1;
+}
+
+/* Left scene: chapter left, body right */
+.scene--left .scene-chapter { grid-column: 1; text-align: right; padding-right: 2rem; }
+.scene--left .scene-body    { grid-column: 2; padding-left: 2rem; }
+
+/* Right scene: body left, chapter right */
+.scene--right .scene-chapter { grid-column: 2; grid-row: 1; text-align: left; padding-left: 2rem; }
+.scene--right .scene-body    { grid-column: 1; grid-row: 1; text-align: right; padding-right: 2rem; }
+
+/* ── Chapter label ── */
+.scene-chapter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    padding-top: 0.25rem;
+}
+
+.scene-num {
+    font-family: 'OffBit', monospace;
+    font-size: clamp(4rem, 8vw, 7rem);
+    line-height: 1;
+    color: rgba(0,0,0,0.07);
+    display: block;
+    transition: color 0.4s ease;
+}
+
+.scene:hover .scene-num {
+    color: var(--rose-gold);
+}
+
+.scene-label {
+    font-family: 'OffBit', monospace;
+    font-size: 0.65rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--rose-gold);
+}
+
+/* ── Scene body ── */
+.scene-text {
+    font-family: 'Lora', serif;
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: var(--primary-dark);
+    margin-bottom: 1.25rem;
+}
+
+.scene-text--italic {
+    font-style: italic;
+    color: #444;
+}
+
+.scene-text--small {
+    font-size: 0.9rem;
+    color: var(--text-muted);
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+    font-style: normal;
+}
+
+/* ── Pull quote ── */
+.scene-pull {
+    font-family: 'NeuePower', sans-serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    line-height: 1.3;
+    color: var(--primary-dark);
+    border: none;
+    padding: 0;
+    margin: 0 0 1.5rem;
+    font-style: normal;
+    letter-spacing: -0.02em;
+}
+
+/* ── Scene divider ── */
+.scene-divider {
+    width: 40px;
+    height: 1px;
+    background: var(--rose-gold);
+    margin: 1.5rem 0;
+}
+
+.scene--right .scene-body .scene-divider {
+    margin-left: auto;
+}
+
+/* ── Last scene extra bottom padding ── */
+.scene--last {
+    padding-bottom: 100px;
+}
+
+/* ══════════════════════════════════════════
+   STATS
+══════════════════════════════════════════ */
+.stat-box {
+    background: var(--primary-dark);
+    color: #fff;
+    padding: 80px 0;
+}
+
+.stat-item h3 {
+    font-family: 'OffBit', monospace;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    margin-bottom: 0.5rem;
+    color: var(--rose-gold);
+    line-height: 1;
+}
+
+.stat-item p {
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    opacity: 0.55;
+    font-family: 'Inter', sans-serif;
+}
+
+/* ══════════════════════════════════════════
+   VISIONARIES (preserved, minor cleanup)
+══════════════════════════════════════════ */
+.section-padding {
+    padding: 100px 0;
+}
+
+.founder-card {
+    text-align: center;
+    padding: 2rem;
+    transition: var(--transition);
+}
+
+.founder-img {
+    width: 220px;
+    height: 280px;
+    background-color: var(--card-bg);
+    border-radius: 110px;
+    margin: 0 auto 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    transition: var(--transition);
+    border: 1px solid transparent;
+}
+
+.founder-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: top center;
+    display: block;
+    pointer-events: none;
+    user-select: none;
+    -webkit-user-drag: none;
+    filter: grayscale(100%);
+    transition: filter 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.founder-card:hover .founder-img img {
+    filter: grayscale(0%);
+}
+
+.founder-card:hover .founder-img {
+    border-color: var(--rose-gold);
+    transform: translateY(-10px);
+    background-color: #fff;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.founder-name {
+    font-family: 'Lora', serif;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.founder-role {
+    font-size: 0.72rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--rose-gold);
+    font-weight: 600;
+    font-family: 'Inter', sans-serif;
+    display: block;
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 768px) {
+
+    .chronicle {
+        padding: 60px 1.5rem 40px;
+    }
+
+    /* Hide spine on mobile */
+    .chronicle-spine { display: none; }
+    .scene::after    { display: none; }
+
+    /* Stack all scenes vertically */
+    .scene {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        padding: 40px 0;
+        border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .scene--left .scene-chapter,
+    .scene--right .scene-chapter {
+        grid-column: 1;
+        grid-row: 1;
+        text-align: left;
+        padding: 0;
+    }
+
+    .scene--left .scene-body,
+    .scene--right .scene-body {
+        grid-column: 1;
+        grid-row: 2;
+        text-align: left;
+        padding: 0;
+    }
+
+    .scene--right .scene-body .scene-divider {
+        margin-left: 0;
+    }
+
+    .scene-num {
+        font-size: 3.5rem;
+    }
+
+    .ah-line-serif  { font-size: clamp(2.2rem, 10vw, 3.5rem); }
+    .ah-line-offbit { font-size: clamp(1.2rem, 5vw, 2rem); }
+}

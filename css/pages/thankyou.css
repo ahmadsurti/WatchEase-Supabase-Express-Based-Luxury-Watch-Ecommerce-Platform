@@ -1,0 +1,506 @@
+/* ─────────────────────────────────────────────
+   WatchEase — Thank You Page
+   Global font-faces declared in navbar.css / home.css
+───────────────────────────────────────────── */
+
+:root {
+    /* thankyou-specific: page has dark bg, needs local border token */
+    --border: rgba(255,255,255,0.08);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: var(--primary-dark);
+    color: #fff;
+    overflow-x: hidden;
+}
+
+/* ══════════════════════════════════════════
+   HERO
+══════════════════════════════════════════ */
+.ty-hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 120px 0 80px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ty-hero::before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 600px;
+    height: 600px;
+    background: radial-gradient(circle, rgba(229,179,163,0.08) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Two-column grid */
+.ty-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    align-items: center;
+    position: relative;
+    z-index: 1;
+}
+
+/* LEFT column */
+.ty-hero-left {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+/* RIGHT column */
+.ty-hero-right {
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 1.75rem;
+    opacity: 0;
+    animation: ty-fade-up 0.7s ease 2s forwards;
+}
+
+.ty-items-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1.25rem;
+}
+
+.ty-order-meta {
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 1.25rem;
+    flex-wrap: wrap;
+}
+
+.ty-items-loading,
+.ty-items-empty {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.35);
+    font-style: italic;
+    padding: 1rem 0;
+}
+
+/* Individual order item row */
+.ty-order-item {
+    display: grid;
+    grid-template-columns: 52px 1fr auto;
+    gap: 1rem;
+    align-items: center;
+    padding: 0.85rem 0;
+    border-bottom: 1px solid rgba(255,255,255,0.06);
+}
+
+.ty-order-item:last-child {
+    border-bottom: none;
+}
+
+.ty-oi-img {
+    width: 52px;
+    height: 60px;
+    background: #242424;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+.ty-oi-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ty-oi-name {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+.ty-oi-qty {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.ty-oi-price {
+    font-family: 'OffBit', monospace;
+    font-size: 0.85rem;
+    color: var(--rose-gold);
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* ── Tick animation ── */
+.ty-tick-wrap {
+    width: 72px;
+    height: 72px;
+    margin-bottom: 2rem;
+    opacity: 0;
+    animation: ty-fade-up 0.5s ease 0.2s forwards;
+}
+
+.ty-tick-ring {
+    /* static decorative ring — no animation */
+}
+
+.ty-tick-circle {
+    fill: none;
+    stroke: var(--rose-gold);
+    stroke-width: 1.5;
+    stroke-dasharray: 226;
+    stroke-dashoffset: 226;
+    animation: tick-circle-draw 1s cubic-bezier(0.4,0,0.2,1) 0.4s forwards;
+}
+
+.ty-tick-check {
+    fill: none;
+    stroke: var(--rose-gold);
+    stroke-width: 2.5;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke-dasharray: 80;
+    stroke-dashoffset: 80;
+    animation: tick-check-draw 0.7s cubic-bezier(0.25, 0.46, 0.45, 0.94) 1.3s forwards;
+}
+
+@keyframes tick-circle-draw { to { stroke-dashoffset: 0; } }
+@keyframes tick-check-draw  { to { stroke-dashoffset: 0; } }
+
+/* ── Headline ── */
+.ty-headline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.1em;
+    margin-bottom: 1.25rem;
+    opacity: 0;
+    animation: ty-fade-up 0.7s ease 1.4s forwards;
+}
+
+.ty-hl-serif {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(2.4rem, 4vw, 3.5rem);
+    line-height: 1.05;
+    color: #fff;
+    display: block;
+}
+
+.ty-hl-offbit {
+    font-family: 'OffBit', monospace;
+    font-size: clamp(1.8rem, 3.5vw, 3rem);
+    line-height: 1.1;
+    color: rgba(255,255,255,0.7);
+    letter-spacing: -0.01em;
+    display: block;
+}
+
+/* ── Sub line ── */
+.ty-sub {
+    font-size: 0.88rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    max-width: 420px;
+    margin-bottom: 2.5rem;
+    line-height: 1.7;
+    opacity: 0;
+    animation: ty-fade-up 0.7s ease 1.6s forwards;
+}
+
+/* ── Order card ── */
+.ty-order-card {
+    background: #1a1a1a;
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 1.75rem 2rem;
+    width: 100%;
+    text-align: left;
+    opacity: 0;
+    animation: ty-fade-up 0.7s ease 1.6s forwards;
+}
+
+.ty-order-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.ty-order-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 0.35rem;
+}
+
+.ty-order-num {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 500;
+    color: #fff;
+    letter-spacing: 0.04em;
+}
+
+.ty-delivery-block { text-align: right; }
+
+.ty-delivery-date {
+    font-family: 'OffBit', monospace;
+    font-size: 1rem;
+    color: var(--rose-gold);
+    letter-spacing: -0.01em;
+}
+
+.ty-divider {
+    height: 1px;
+    background: rgba(255,255,255,0.07);
+    margin: 1.25rem 0;
+}
+
+.ty-product-row {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.ty-product-img {
+    width: 64px;
+    height: 72px;
+    background: #242424;
+    border-radius: 12px;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(255,255,255,0.06);
+}
+
+.ty-product-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.ty-product-name {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+.ty-product-by {
+    font-size: 0.7rem;
+    color: rgba(255,255,255,0.35);
+    letter-spacing: 0.05em;
+}
+
+.ty-product-by span {
+    color: var(--rose-gold);
+}
+
+/* ══════════════════════════════════════════
+   PRODUCT LOOP SECTIONS
+══════════════════════════════════════════ */
+.ty-loop {
+    background: #fff;
+    padding: 80px 0;
+}
+
+.ty-loop--women {
+    background: var(--soft-cream);
+}
+
+.ty-loop-header {
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.ty-loop-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1em;
+}
+
+.ty-lt-serif {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(2rem, 4vw, 3rem);
+    color: var(--primary-dark);
+    display: block;
+    line-height: 1.05;
+}
+
+.ty-lt-offbit {
+    font-family: 'OffBit', monospace;
+    font-size: clamp(1.1rem, 2.5vw, 1.8rem);
+    color: var(--primary-dark);
+    letter-spacing: -0.01em;
+    display: block;
+    line-height: 1.2;
+}
+
+/* ── Product cards — two-tone (reuse collection style) ── */
+.ty-product-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+    transition: transform 0.45s cubic-bezier(0.165, 0.84, 0.44, 1),
+                box-shadow 0.45s cubic-bezier(0.165, 0.84, 0.44, 1);
+    margin-bottom: 0;
+}
+
+.ty-product-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.10);
+}
+
+.ty-img-container {
+    position: relative;
+    background-color: var(--soft-cream);
+    height: 300px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ty-img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block;
+}
+
+.ty-product-card:hover .ty-img-container img {
+    transform: scale(1.04);
+}
+
+.ty-card-meta {
+    background: var(--primary-dark);
+    padding: 1rem 1.25rem 1.2rem;
+}
+
+.ty-style-tag {
+    font-family: 'OffBit', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--rose-gold);
+    display: block;
+    margin-bottom: 0.4rem;
+}
+
+.ty-card-meta-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.ty-card-title {
+    font-family: 'Lora', serif;
+    font-size: 1rem;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+}
+
+.ty-card-price {
+    font-family: 'OffBit', monospace;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.45);
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* ── CTA button ── */
+.ty-cta {
+    display: inline-block;
+    background: var(--primary-dark);
+    color: #fff;
+    padding: 0.85rem 2.25rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 500;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.02em;
+    transition: background 0.3s ease;
+}
+
+.ty-cta:hover {
+    background: #2a2a2a;
+    color: #fff;
+}
+
+/* ══════════════════════════════════════════
+   ANIMATIONS
+══════════════════════════════════════════ */
+@keyframes ty-fade-up {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 991px) {
+    .ty-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+    }
+
+    .ty-hero-left {
+        align-items: center;
+        text-align: center;
+    }
+
+    .ty-headline {
+        align-items: center;
+    }
+}
+
+@media (max-width: 768px) {
+    .ty-hero { padding: 100px 0 60px; }
+    .ty-order-card { padding: 1.25rem; }
+    .ty-order-top { flex-direction: column; gap: 1rem; }
+    .ty-delivery-block { text-align: left; }
+    .ty-img-container { height: 240px; }
+    .ty-order-item { grid-template-columns: 44px 1fr auto; gap: 0.75rem; }
+}

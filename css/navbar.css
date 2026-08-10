@@ -1,0 +1,818 @@
+/* ─────────────────────────────────────────────
+   WatchEase — Frosted Acrylic Navbar
+   Light frosted glass, fixed, full-width
+───────────────────────────────────────────── */
+
+:root {
+    --wn-blur:         24px;
+    --wn-blur-heavy:   40px;
+    --wn-bg:           rgba(255, 255, 255, 0.55);
+    --wn-bg-hover:     rgba(255, 255, 255, 0.72);
+    --wn-border:       rgba(255, 255, 255, 0.6);
+    --wn-border-inner: rgba(0, 0, 0, 0.06);
+    --wn-text:         #121212;
+    --wn-text-muted:   #666666;
+    --wn-accent:       #e5b3a3;       /* rose gold */
+    --wn-accent-dark:  #121212;
+    --wn-height:       68px;
+    --wn-speed:        0.4s;
+    --wn-ease:         cubic-bezier(0.4, 0, 0.2, 1);
+    --wn-radius:       0px;           /* full-width bar, no pill */
+
+    /* ── Shared brand tokens (used across all pages) ── */
+    --primary-dark:  #121212;
+    --off-white:     #f8f9fa;
+    --card-bg:       #f3f3f3;
+    --soft-cream:    #faf7f5;
+    --text-muted:    #666666;
+    --rose-gold:     #e5b3a3;
+    --transition:    all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+/* ── Custom font ── */
+@font-face {
+    font-family: 'PowerGrotesk';
+    src: url('../power_grotesk/PowerGrotesk-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* ── Wrapper ── */
+.wn-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+}
+
+/* ── Main bar ── */
+.wn-bar {
+    width: 100%;
+    height: var(--wn-height);
+    display: flex;
+    align-items: center;
+    padding: 0 2.5rem;
+    position: relative;
+
+    /* Frosted acrylic core */
+    background: var(--wn-bg);
+    backdrop-filter: blur(var(--wn-blur)) saturate(160%) brightness(1.08);
+    -webkit-backdrop-filter: blur(var(--wn-blur)) saturate(160%) brightness(1.08);
+
+    /* Matte texture via noise-like layered gradients */
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.18) 0%,
+            rgba(255,255,255,0.04) 40%,
+            rgba(200,200,210,0.10) 70%,
+            rgba(255,255,255,0.14) 100%
+        );
+
+    border-bottom: 1px solid var(--wn-border-inner);
+
+    /* Subtle top highlight — the "acrylic edge" */
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.85),
+        0 2px 32px rgba(0,0,0,0.07),
+        0 1px 4px rgba(0,0,0,0.04);
+
+    transition:
+        background var(--wn-speed) var(--wn-ease),
+        backdrop-filter var(--wn-speed) var(--wn-ease),
+        box-shadow var(--wn-speed) var(--wn-ease);
+}
+
+/* Heavier blur on scroll */
+.wn-bar--scrolled {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(var(--wn-blur-heavy)) saturate(180%) brightness(1.05);
+    -webkit-backdrop-filter: blur(var(--wn-blur-heavy)) saturate(180%) brightness(1.05);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        0 4px 40px rgba(0,0,0,0.10),
+        0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* ── Inner layout ── */
+.wn-inner {
+    width: 100%;
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2rem;
+}
+
+/* ── Brand ── */
+.wn-brand {
+    font-family: 'PowerGrotesk', 'Lora', serif;
+    font-size: 1.75rem;
+    font-weight: 400;
+    color: var(--wn-text);
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    flex-shrink: 0;
+    transition: opacity 0.2s;
+}
+.wn-brand:hover { opacity: 0.7; color: var(--wn-text); }
+
+/* ── Nav links ── */
+.wn-links {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.wn-links a {
+    font-size: 0.85rem;
+    font-weight: 400;
+    color: var(--wn-text-muted);
+    text-decoration: none;
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    transition: color 0.2s, background 0.2s;
+    letter-spacing: 0.01em;
+}
+.wn-links a:hover {
+    color: var(--wn-text);
+    background: rgba(0,0,0,0.05);
+}
+.wn-links a.wn-active {
+    color: var(--wn-text);
+    font-weight: 500;
+}
+
+/* ── Right actions ── */
+.wn-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+/* Cart icon wrapper */
+.wn-cart {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    color: var(--wn-text);
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.wn-cart:hover { background: rgba(0,0,0,0.06); color: var(--wn-text); }
+
+/* Cart badge */
+.wn-badge {
+    display: none;
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: var(--wn-accent);
+    color: var(--wn-accent-dark);
+    font-size: 8px;
+    font-weight: 700;
+    min-width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0 2px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 0 0 1.5px rgba(255,255,255,0.9);
+}
+
+/* Auth buttons */
+.wn-btn-ghost {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--wn-text);
+    background: rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.10);
+    padding: 0.45rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+    white-space: nowrap;
+}
+.wn-btn-ghost:hover {
+}
+
+.wn-btn-fill {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: #fff;
+    background: var(--wn-accent-dark);
+    border: 1px solid var(--wn-accent-dark);
+    padding: 0.45rem 1.2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+    white-space: nowrap;
+}
+.wn-btn-fill:hover {
+}
+
+/* Profile link (wraps avatar + greeting) */
+.wn-profile-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    text-decoration: none;
+    border-radius: 50px;
+    padding: 0.3rem 0.75rem 0.3rem 0.3rem;
+    transition: background 0.2s;
+}
+.wn-profile-link:hover {
+    background: rgba(0,0,0,0.05);
+}
+
+/* Avatar circle */
+.wn-profile-avatar {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: var(--wn-accent-dark);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0;
+    flex-shrink: 0;
+    font-family: 'Inter', sans-serif;
+}
+
+/* Logged-in greeting */
+.wn-greeting {
+    font-size: 0.82rem;
+    color: var(--wn-text-muted);
+    white-space: nowrap;
+}
+
+/* Logout button */
+.wn-btn-logout {
+    font-size: 0.82rem;
+    font-weight: 500;
+    color: var(--wn-text);
+    background: rgba(0,0,0,0.04);
+    border: 1px solid rgba(0,0,0,0.10);
+    padding: 0.45rem 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s;
+    white-space: nowrap;
+}
+.wn-btn-logout:hover { background: rgba(0,0,0,0.09); }
+
+/* Drawer wishlist badge */
+.wn-drawer-badge {
+    display: none;
+    position: absolute;
+    top: -6px;
+    right: -8px;
+    background: var(--wn-accent);
+    color: var(--wn-accent-dark);
+    font-size: 8px;
+    font-weight: 700;
+    min-width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    padding: 0 2px;
+    font-family: 'Inter', sans-serif;
+    box-shadow: 0 0 0 1.5px rgba(255,255,255,0.9);
+}
+
+/* ── Mobile hamburger ── */
+.wn-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 36px;
+    height: 36px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 4px;
+    border-radius: 8px;
+    transition: background 0.2s;
+}
+.wn-hamburger:hover { background: rgba(0,0,0,0.06); }
+.wn-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--wn-text);
+    border-radius: 2px;
+    transform-origin: center;
+    transition: transform 0.3s var(--wn-ease), opacity 0.3s;
+}
+.wn-hamburger.wn-open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+.wn-hamburger.wn-open span:nth-child(2) { opacity: 0; transform: scaleX(0); }
+.wn-hamburger.wn-open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
+/* ── Mobile drawer ── */
+.wn-drawer {
+    display: none;
+    flex-direction: column;
+    gap: 0;
+    padding: 1rem 1.5rem 1.5rem;
+    background: rgba(255, 255, 255, 0.55);
+    backdrop-filter: blur(var(--wn-blur-heavy)) saturate(160%) brightness(1.08);
+    -webkit-backdrop-filter: blur(var(--wn-blur-heavy)) saturate(160%) brightness(1.08);
+    background-image: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.18) 0%,
+        rgba(255,255,255,0.04) 40%,
+        rgba(200,200,210,0.10) 70%,
+        rgba(255,255,255,0.14) 100%
+    );
+    border-top: 1px solid var(--wn-border-inner);
+    border-bottom: 1px solid var(--wn-border-inner);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.85),
+        0 8px 32px rgba(0,0,0,0.08);
+}
+.wn-drawer.wn-drawer--open { display: flex; }
+
+.wn-drawer a, .wn-drawer button {
+    font-size: 0.95rem;
+    color: var(--wn-text);
+    text-decoration: none;
+    padding: 0.75rem 0;
+    border: none;
+    background: none;
+    text-align: left;
+    cursor: pointer;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    transition: color 0.2s;
+    font-family: 'Inter', sans-serif;
+}
+
+.wn-drawer-theme {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid rgba(0,0,0,0.06);
+    font-size: 0.95rem;
+    color: var(--wn-text);
+    font-family: 'Inter', sans-serif;
+}
+.wn-drawer a:last-child, .wn-drawer button:last-child { border-bottom: none; }
+.wn-drawer a:hover, .wn-drawer button:hover { color: var(--wn-text-muted); }
+.wn-drawer-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(0,0,0,0.06);
+}
+.wn-drawer-actions a, .wn-drawer-actions button {
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-align: center;
+    flex: 1;
+}
+
+.wn-drawer-actions .wn-btn-logout {
+    flex: 0 0 100%;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1024px) {
+    .wn-greeting   { display: none; }
+    .wn-hamburger  { display: flex; }
+    .wn-links      { display: none; }
+    .wn-btn-ghost,
+    .wn-btn-fill   { display: none; }
+
+    .wn-inner {
+        gap: 0;
+    }
+
+    .wn-actions {
+        margin-left: auto;
+        gap: 0.25rem;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Hide logout from the bar only — drawer logout stays visible */
+    .wn-actions .wn-btn-logout { display: none; }
+}
+
+/* Hide drawer logout above 768px — it lives in the bar there */
+@media (min-width: 769px) {
+    .wn-drawer-actions .wn-btn-logout { display: none; }
+}
+
+@media (max-width: 768px) {
+    .wn-links       { display: none; }
+    .wn-btn-ghost,
+    .wn-btn-fill,
+    .wn-greeting    { display: none; }
+    .wn-hamburger   { display: flex; }
+    .wn-bar         { padding: 0 1.25rem; }
+
+    /* Keep cart, wishlist, avatar visible next to hamburger */
+    .wn-cart            { display: inline-flex; }
+    .wn-profile-link    { display: inline-flex; padding: 0.3rem; }
+
+    /* Show only the Login button next to hamburger when logged out */
+    .wn-btn-login-mobile {
+        display: inline-flex;
+        align-items: center;
+    }
+
+    /* Collapse the gap so actions + hamburger sit flush together on the right */
+    .wn-inner {
+        gap: 0;
+    }
+
+    .wn-actions {
+        margin-left: auto;
+        gap: 0.25rem;
+    }
+}
+
+/* Hide wishlist + account drawer links above 375px — they live in the bar */
+@media (min-width: 376px) {
+    .wn-drawer-wishlist,
+    .wn-drawer-account { display: none; }
+}
+
+/* Below 375px — move wishlist + account to drawer, hide from bar */
+@media (max-width: 375px) {
+    /* Hide heart and avatar from the bar */
+    .wn-cart[aria-label="Wishlist"],
+    .wn-profile-link { display: none !important; }
+
+    /* Show wishlist + account in drawer */
+    .wn-drawer-wishlist,
+    .wn-drawer-account { display: flex; }
+}
+
+/* ── Dark frosted variant (hero pages) ───────────────────────────────────────
+   Activated via <body class="wn-hero-page">
+   Dark acrylic over video/dark backgrounds. Transitions to light on scroll.
+─────────────────────────────────────────────────────────────────────────── */
+
+body.wn-hero-page .wn-bar {
+    background: rgba(10, 10, 10, 0.35);
+    background-image:
+        linear-gradient(
+            135deg,
+            rgba(255,255,255,0.06) 0%,
+            rgba(255,255,255,0.01) 40%,
+            rgba(0,0,0,0.08) 70%,
+            rgba(255,255,255,0.04) 100%
+        );
+    backdrop-filter: blur(20px) saturate(140%) brightness(0.92);
+    -webkit-backdrop-filter: blur(20px) saturate(140%) brightness(0.92);
+    border-bottom: 1px solid rgba(255,255,255,0.10);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.12),
+        0 2px 32px rgba(0,0,0,0.25);
+}
+
+/* Dark variant text colours */
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-brand,
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-links a,
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-cart,
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-greeting,
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-profile-link {
+    color: rgba(255,255,255,0.92);
+}
+
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-links a:hover {
+    color: #fff;
+    background: rgba(255,255,255,0.10);
+}
+
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-btn-ghost {
+    color: rgba(255,255,255,0.88);
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.20);
+}
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-btn-ghost:hover {
+    background: rgba(255,255,255,0.18);
+    border-color: rgba(255,255,255,0.35);
+}
+
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-btn-fill {
+    background: rgba(255,255,255,0.95);
+    color: #121212;
+    border-color: transparent;
+}
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-btn-fill:hover {
+    background: #fff;
+}
+
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-btn-logout {
+    color: rgba(255,255,255,0.88);
+    background: rgba(255,255,255,0.10);
+    border-color: rgba(255,255,255,0.20);
+}
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-btn-logout:hover {
+    background: rgba(255,255,255,0.18);
+}
+
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-badge {
+    box-shadow: 0 0 0 2px rgba(10,10,10,0.5);
+}
+
+/* Hamburger lines go white on hero */
+body.wn-hero-page .wn-bar:not(.wn-bar--scrolled) .wn-hamburger span {
+    background: rgba(255,255,255,0.9);
+}
+
+/* Drawer goes dark frosted on hero pages while still in the hero (not scrolled) */
+body.wn-hero-page .wn-drawer:not(.wn-drawer--scrolled) {
+    background: rgba(10, 10, 10, 0.55);
+    background-image: linear-gradient(
+        135deg,
+        rgba(255,255,255,0.06) 0%,
+        rgba(255,255,255,0.01) 40%,
+        rgba(0,0,0,0.08) 70%,
+        rgba(255,255,255,0.04) 100%
+    );
+    backdrop-filter: blur(var(--wn-blur-heavy)) saturate(140%) brightness(0.92);
+    -webkit-backdrop-filter: blur(var(--wn-blur-heavy)) saturate(140%) brightness(0.92);
+    border-top: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.10),
+        0 8px 32px rgba(0,0,0,0.35);
+}
+
+body.wn-hero-page .wn-drawer:not(.wn-drawer--scrolled) a,
+body.wn-hero-page .wn-drawer:not(.wn-drawer--scrolled) button,
+body.wn-hero-page .wn-drawer:not(.wn-drawer--scrolled) .wn-drawer-theme {
+    color: rgba(255,255,255,0.85);
+    border-bottom-color: rgba(255,255,255,0.08);
+}
+
+body.wn-hero-page .wn-drawer:not(.wn-drawer--scrolled) a:hover,
+body.wn-hero-page .wn-drawer:not(.wn-drawer--scrolled) button:hover {
+    color: #fff;
+}
+body.wn-hero-page .wn-bar--scrolled {
+    background: rgba(255, 255, 255, 0.72);
+    backdrop-filter: blur(var(--wn-blur-heavy)) saturate(180%) brightness(1.05);
+    -webkit-backdrop-filter: blur(var(--wn-blur-heavy)) saturate(180%) brightness(1.05);
+    border-bottom: 1px solid var(--wn-border-inner);
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.9),
+        0 4px 40px rgba(0,0,0,0.10),
+        0 1px 6px rgba(0,0,0,0.06);
+}
+
+/* Smooth colour transition between dark and light states */
+.wn-bar {
+    transition:
+        background      0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        backdrop-filter 0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        box-shadow      0.5s cubic-bezier(0.4, 0, 0.2, 1),
+        border-color    0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.wn-bar *  { transition: color 0.4s ease, background 0.4s ease, border-color 0.4s ease; }
+
+/* ── Body offset ─────────────────────────────────────────────────────────── */
+body { padding-top: var(--wn-height); }
+/* Hero pages sit flush under the navbar — video fills full viewport */
+body.wn-hero-page { padding-top: 0; }
+
+/* ── Global: no image drag ───────────────────────────────────────────────── */
+img {
+    -webkit-user-drag: none;
+    user-drag: none;
+    -webkit-user-select: none;
+    user-select: none;
+    pointer-events: none;
+}
+a img, button img { pointer-events: auto; }
+
+/* ── Global: brand selection highlight ──────────────────────────────────── */
+::selection {
+    background: var(--wn-accent);
+    color: var(--wn-accent-dark);
+}
+
+/* ── Custom scrollbar ── */
+::-webkit-scrollbar {
+    width: 4px;
+}
+::-webkit-scrollbar-track {
+    background: #1a1a1a;
+}
+::-webkit-scrollbar-thumb {
+    background: var(--wn-accent);
+    border-radius: 99px;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #d4957f;
+}
+
+/* Firefox */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--wn-accent) #1a1a1a;
+}
+
+/* ══════════════════════════════════════════
+   GLOBAL FOOTER (PERMANENT UNIFIED RENDER)
+══════════════════════════════════════════ */
+.site-footer {
+    background: #111111;
+    color: #ffffff;
+    overflow: hidden;
+    padding-top: 48px;
+    /* Break out of any parent container, always span full viewport width */
+    width: 100vw;
+    position: relative;
+    left: 50%;
+    right: 50%;
+    margin-left: -50vw;
+    margin-right: -50vw;
+    box-sizing: border-box;
+}
+
+.sf-top {
+    padding: 0 clamp(1.5rem, 5vw, 5rem) 60px;
+    max-width: 1400px;
+    width: 100%;
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.sf-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1.5fr;
+    gap: 3rem;
+    padding-bottom: 3rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+}
+
+.sf-brand-name {
+    font-family: 'PowerGrotesk', 'Lora', serif;
+    font-size: 1.4rem;
+    font-weight: 400;
+    color: #fff;
+    display: block;
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+}
+
+.sf-brand-tagline {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.4);
+    font-weight: 300;
+    margin-bottom: 1.75rem;
+    line-height: 1.6;
+}
+
+.sf-linkedin {
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.sf-li-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    font-size: 0.8rem;
+    font-family: 'Inter', sans-serif;
+    transition: color 0.25s ease;
+}
+
+.sf-li-link svg {
+    flex-shrink: 0;
+    opacity: 0.7;
+    transition: opacity 0.25s ease;
+}
+
+.sf-li-link:hover {
+    color: #e5b3a3;
+}
+
+.sf-li-link:hover svg {
+    opacity: 1;
+}
+
+.sf-col-heading {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 2.5px;
+    color: rgba(255,255,255,0.35);
+    margin-bottom: 1.25rem;
+}
+
+.sf-links {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+.sf-links a {
+    font-size: 0.85rem;
+    color: rgba(255,255,255,0.55);
+    text-decoration: none;
+    transition: color 0.25s ease;
+    font-family: 'Inter', sans-serif;
+}
+
+.sf-links a:hover {
+    color: #fff;
+}
+
+.sf-col--contact p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.5);
+    margin-bottom: 0.5rem;
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif;
+    font-weight: 300;
+}
+
+.sf-wordmark-wrap {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    overflow: hidden;
+    height: clamp(80px, 14vw, 180px);
+    padding: 0 clamp(1rem, 3vw, 3.5rem);
+    margin-top: 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.sf-wordmark {
+    font-family: 'NeuePower', sans-serif;
+    font-size: clamp(5rem, 16vw, 18rem);
+    line-height: 1;
+    color: rgba(255,255,255,0.06);
+    white-space: nowrap;
+    display: block;
+    transform: translateY(26%);
+    user-select: none;
+    pointer-events: none;
+    letter-spacing: -0.03em;
+    max-width: 100%;
+}
+
+@media (max-width: 768px) {
+    .sf-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+    }
+    .sf-brand-col {
+        grid-column: 1 / -1;
+    }
+}
+
+@media (max-width: 480px) {
+    .sf-grid {
+        grid-template-columns: 1fr;
+        gap: 1.75rem;
+    }
+
+    .sf-wordmark {
+        font-size: clamp(3.5rem, 18vw, 6rem);
+    }
+
+    .sf-wordmark-wrap {
+        height: clamp(55px, 12vw, 90px);
+        padding: 0;
+        justify-content: center;
+    }
+}
+

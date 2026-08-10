@@ -1,0 +1,338 @@
+/* ─────────────────────────────────────────────
+   WatchEase — Gift a Timepiece Page
+───────────────────────────────────────────── */
+
+:root {
+    --g-dark:       #121212;
+    --g-muted:      #888888;
+    --g-border:     #e8e8e8;
+    --g-bg-soft:    #f7f7f7;
+    --g-rose:       #e5b3a3;
+    --g-rose-dark:  #c9917e;
+    --g-success:    #2d6a4f;
+    --g-error:      #cc3333;
+    --g-radius:     14px;
+    --g-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: #ffffff;
+    color: var(--g-dark);
+}
+
+/* ── Root ── */
+.gift-root {
+    max-width: 720px;
+    padding-top: 64px;
+    padding-bottom: 100px;
+}
+
+/* ── Header ── */
+.gift-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+    padding: 48px 0 36px;
+    border-bottom: 1px solid var(--g-border);
+    margin-bottom: 32px;
+}
+
+.gift-back {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    color: var(--g-muted);
+    text-decoration: none;
+    flex-shrink: 0;
+    margin-top: 4px;
+    transition: color 0.2s, background 0.2s;
+}
+
+.gift-back:hover {
+    color: var(--g-dark);
+    background: rgba(0,0,0,0.05);
+}
+
+.gift-header-text {
+    flex: 1;
+}
+
+.gift-eyebrow {
+    font-size: 0.72rem;
+    font-weight: 500;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--g-muted);
+    margin-bottom: 0.4rem;
+}
+
+.gift-title {
+    font-family: 'Lora', serif;
+    font-size: clamp(1.6rem, 4vw, 2.2rem);
+    font-weight: 500;
+    margin-bottom: 0.4rem;
+    line-height: 1.2;
+}
+
+.gift-subtitle {
+    font-size: 0.85rem;
+    color: var(--g-muted);
+    margin: 0;
+}
+
+/* ── Product preview strip ── */
+.gift-preview {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    padding: 1rem 1.25rem;
+    background: var(--g-bg-soft);
+    border-radius: var(--g-radius);
+    margin-bottom: 40px;
+}
+
+.gift-preview-img {
+    width: 56px;
+    height: 64px;
+    border-radius: 10px;
+    background: #ece9e4;
+    overflow: hidden;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.gift-preview-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.gift-preview-info {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+}
+
+.gift-preview-label {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--g-rose-dark);
+}
+
+.gift-preview-name {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--g-dark);
+}
+
+.gift-preview-price {
+    font-size: 0.82rem;
+    color: var(--g-muted);
+}
+
+/* ── Form ── */
+.gift-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.gift-section-label {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--g-muted);
+    margin-bottom: 1.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--g-border);
+}
+
+.gf-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+}
+
+.gf-row--3 {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.gf-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    margin-bottom: 1.25rem;
+}
+
+.gf-row .gf-group,
+.gf-row--3 .gf-group {
+    margin-bottom: 0;
+}
+
+.gf-group label {
+    font-size: 0.78rem;
+    font-weight: 500;
+    color: var(--g-dark);
+    letter-spacing: 0.01em;
+}
+
+.gf-optional {
+    font-weight: 400;
+    color: var(--g-muted);
+}
+
+.gf-group input,
+.gf-group textarea {
+    width: 100%;
+    padding: 0.7rem 1rem;
+    border: 1px solid var(--g-border);
+    border-radius: 10px;
+    font-size: 0.88rem;
+    font-family: 'Inter', sans-serif;
+    color: var(--g-dark);
+    background: #fff;
+    transition: border-color 0.2s, box-shadow 0.2s;
+    outline: none;
+    resize: none;
+}
+
+.gf-group input:focus,
+.gf-group textarea:focus {
+    border-color: var(--g-dark);
+    box-shadow: 0 0 0 3px rgba(18,18,18,0.06);
+}
+
+.gf-group input::placeholder,
+.gf-group textarea::placeholder {
+    color: #bbb;
+}
+
+/* ── Teaser checkbox ── */
+.gift-teaser-check {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    cursor: pointer;
+    margin-bottom: 2rem;
+    margin-top: 0.5rem;
+    padding: 1.1rem 1.25rem;
+    border: 1px solid var(--g-border);
+    border-radius: var(--g-radius);
+    background: var(--g-bg-soft);
+    transition: border-color 0.2s, background 0.2s;
+    user-select: none;
+}
+
+.gift-teaser-check:hover {
+    border-color: var(--g-rose);
+    background: #fdf6f4;
+}
+
+.gift-teaser-check input[type="checkbox"] {
+    position: absolute;
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.gift-check-box {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 20px;
+    height: 20px;
+    border-radius: 6px;
+    border: 1.5px solid var(--g-border);
+    background: #fff;
+    flex-shrink: 0;
+    margin-top: 1px;
+    transition: background 0.2s, border-color 0.2s;
+}
+
+.gift-check-box svg {
+    opacity: 0;
+    transition: opacity 0.15s;
+}
+
+.gift-teaser-check input:checked ~ .gift-check-box {
+    background: var(--g-dark);
+    border-color: var(--g-dark);
+}
+
+.gift-teaser-check input:checked ~ .gift-check-box svg {
+    opacity: 1;
+}
+
+.gift-check-text {
+    font-size: 0.85rem;
+    color: var(--g-dark);
+    line-height: 1.55;
+}
+
+/* ── Actions ── */
+.gf-actions {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    margin-top: 0.5rem;
+}
+
+.gf-btn-submit {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.6rem;
+    padding: 0.8rem 2.2rem;
+    background: var(--g-dark);
+    color: #fff;
+    border: none;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 500;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    transition: var(--g-transition);
+    white-space: nowrap;
+}
+
+.gf-btn-submit:hover {
+    background: #333;
+    transform: translateY(-1px);
+}
+
+.gf-btn-submit:disabled {
+    background: #aaa;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.gf-feedback {
+    font-size: 0.82rem;
+    font-weight: 500;
+}
+
+.gf-feedback--error   { color: var(--g-error); }
+.gf-feedback--success { color: var(--g-success); }
+
+/* ── Responsive ── */
+@media (max-width: 640px) {
+    .gift-root { padding-top: 24px; }
+
+    .gf-row { grid-template-columns: 1fr; }
+
+    .gf-row--3 { grid-template-columns: 1fr 1fr; }
+
+    .gift-header { flex-direction: column; gap: 0.75rem; }
+}
+
+@media (max-width: 400px) {
+    .gf-row--3 { grid-template-columns: 1fr; }
+}

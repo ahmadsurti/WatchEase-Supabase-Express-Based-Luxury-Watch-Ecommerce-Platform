@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WatchEase — Sign In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../css/pages/auth.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="../css/dark-mode.css">
+</head>
+<body>
+    <script>if(localStorage.getItem('we-theme')==='dark')document.body.classList.add('dark')</script>
+    <div class="container">
+
+        <!-- ── Left animated panel ── -->
+        <div class="left-section">
+            <div class="brand">
+                <span>WatchEase</span>
+            </div>
+
+            <div class="character-container">
+                <div class="characters-wrapper">
+                    <!-- Purple -->
+                    <div id="purple-char" class="character purple">
+                        <div class="eyes-container" id="purple-eyes">
+                            <div class="eye-ball white small" id="purple-eye-left">
+                                <div class="pupil black small"></div>
+                            </div>
+                            <div class="eye-ball white small" id="purple-eye-right">
+                                <div class="pupil black small"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Black -->
+                    <div id="black-char" class="character black">
+                        <div class="eyes-container" id="black-eyes">
+                            <div class="eye-ball white x-small" id="black-eye-left">
+                                <div class="pupil black x-small"></div>
+                            </div>
+                            <div class="eye-ball white x-small" id="black-eye-right">
+                                <div class="pupil black x-small"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Orange -->
+                    <div id="orange-char" class="character orange">
+                        <div class="eyes-container" id="orange-eyes">
+                            <div class="pupil black medium" id="orange-pupil-left"></div>
+                            <div class="pupil black medium" id="orange-pupil-right"></div>
+                        </div>
+                    </div>
+                    <!-- Yellow -->
+                    <div id="yellow-char" class="character yellow">
+                        <div class="eyes-container" id="yellow-eyes">
+                            <div class="pupil black medium" id="yellow-pupil-left"></div>
+                            <div class="pupil black medium" id="yellow-pupil-right"></div>
+                        </div>
+                        <div class="mouth" id="yellow-mouth"></div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid-overlay"></div>
+            <div class="blob blob-1"></div>
+            <div class="blob blob-2"></div>
+        </div>
+
+        <!-- ── Right form panel ── -->
+        <div class="right-section">
+            <div class="login-box">
+
+                <!-- Mobile logo -->
+                <div class="mobile-brand">
+                    <div class="brand-icon">
+                        <i data-lucide="watch"></i>
+                    </div>
+                    <span>WatchEase</span>
+                </div>
+
+                <div class="header">
+                    <h1 id="form-title">Welcome back!</h1>
+                    <p id="form-subtitle">Please enter your details</p>
+                </div>
+
+                <div id="alert-container"></div>
+
+                <!-- ── Login / Signup form ── -->
+                <form id="auth-form">
+                    <!-- Name field — signup only -->
+                    <div class="form-group" id="name-field" style="display:none;">
+                        <label for="name">Full Name</label>
+                        <input type="text" id="name" placeholder="Your full name" autocomplete="name">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" placeholder="anna@gmail.com" required autocomplete="email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="password">Password</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" placeholder="••••••••" required autocomplete="current-password">
+                            <button type="button" id="toggle-password" class="toggle-btn">
+                                <i data-lucide="eye" id="eye-icon"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="form-options" id="login-options">
+                        <a href="#" class="forgot-link" id="forgot-link">Forgot password?</a>
+                    </div>
+
+                    <div id="error-message" class="error-message hidden"></div>
+
+                    <button type="submit" id="submit-btn" class="submit-btn">Log in</button>
+                </form>
+
+                <!-- ── Forgot password panel (hidden by default) ── -->
+                <div id="forgot-panel" class="forgot-panel hidden">
+                    <button type="button" id="forgot-back" class="forgot-back">
+                        <i data-lucide="arrow-left"></i> Back to login
+                    </button>
+                    <div class="header" style="margin-top:1.5rem;">
+                        <h1>Reset password</h1>
+                        <p>We'll send a reset link to your email</p>
+                    </div>
+                    <div id="forgot-alert"></div>
+                    <div class="form-group">
+                        <label for="forgot-email">Email</label>
+                        <input type="email" id="forgot-email" placeholder="anna@gmail.com" autocomplete="email">
+                    </div>
+                    <button type="button" id="forgot-submit" class="submit-btn" style="margin-top:1.25rem;">
+                        Send reset link
+                    </button>
+                </div>
+
+                <div class="signup-link" id="signup-link-row">
+                    <span id="toggle-text">Don't have an account?</span>
+                    <a href="#" id="toggle-link">Sign Up</a>
+                </div>
+
+                <div class="back-home">
+                    <a href="../index.html">← Back to Home</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="../js/pages/auth.js"></script>
+    <script>
+        // Lucide icons init — runs after module loads
+        window.addEventListener('load', () => lucide.createIcons());
+    </script>
+</body>
+</html>
+
+
+
+

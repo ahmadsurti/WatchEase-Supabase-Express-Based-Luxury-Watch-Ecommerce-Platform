@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details | WatchEase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/pages/product.css">
+    <link rel="stylesheet" href="../css/pages/home.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+</head>
+<body>
+    <script>if(localStorage.getItem('we-theme')==='dark')document.body.classList.add('dark')</script>
+
+    <main class="container product-container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="gallery-sticky">
+                    <div class="main-img-holder">
+                        <img id="main-watch-img" src="" alt="Product Image">
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="product-info">
+                    <nav class="breadcrumb-custom" id="breadcrumb"></nav>
+                    <div class="product-title-row">
+                        <h1 class="product-title-large" id="product-name"></h1>
+                        <button
+                            class="btn-wishlist"
+                            id="wishlist-btn"
+                            aria-label="Add to wishlist"
+                        >
+                            <svg class="heart-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <p class="price-tag" id="product-price"></p>
+                    <p class="text-muted mb-5" id="product-desc"></p>
+
+                    <div class="action-group">
+                        <button class="btn-add" id="add-btn">Add to Collection</button>
+                        <button class="btn-gift" id="gift-btn">
+                            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                                <path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                            </svg>
+                            Gift Someone
+                        </button>
+                    </div>
+
+                    <div class="specs-grid">
+                        <div class="spec-item"><label>Movement</label><p>WatchEase Caliber-S Automatic</p></div>
+                        <div class="spec-item"><label>Case Material</label><p>316L Surgical Steel</p></div>
+                        <div class="spec-item"><label>Water Resistance</label><p>10 ATM (100 Meters)</p></div>
+                        <div class="spec-item"><label>Glass</label><p>AR-Coated Sapphire</p></div>
+                    </div>
+
+                    <div class="reviews-section">
+                        <!-- Summary bar -->
+                        <div class="reviews-header">
+                            <h3>Customer Reviews</h3>
+                            <div class="reviews-summary" id="reviews-summary" style="display:none;">
+                                <span class="summary-score" id="summary-score">—</span>
+                                <span class="summary-stars" id="summary-stars"></span>
+                                <span class="summary-count" id="summary-count"></span>
+                            </div>
+                        </div>
+
+                        <!-- Review list -->
+                        <div id="reviews-loading" class="reviews-loading">
+                            <span class="rv-spinner"></span>
+                        </div>
+                        <div id="reviews-list"></div>
+                        <p id="reviews-empty" class="reviews-empty-msg" style="display:none;">
+                            No reviews yet. Be the first.
+                        </p>
+
+                        <!-- Write / edit review form -->
+                        <div id="review-form-wrap" style="display:none;">
+                            <div class="rv-form-divider"></div>
+                            <h4 class="rv-form-title" id="rv-form-title">Write a Review</h4>
+
+                            <div class="rv-star-picker" id="rv-star-picker" role="group" aria-label="Rating">
+                                <button type="button" class="rv-star" data-val="1" aria-label="1 star">★</button>
+                                <button type="button" class="rv-star" data-val="2" aria-label="2 stars">★</button>
+                                <button type="button" class="rv-star" data-val="3" aria-label="3 stars">★</button>
+                                <button type="button" class="rv-star" data-val="4" aria-label="4 stars">★</button>
+                                <button type="button" class="rv-star" data-val="5" aria-label="5 stars">★</button>
+                            </div>
+                            <input type="hidden" id="rv-rating-val" value="0">
+
+                            <textarea id="rv-comment" class="rv-textarea" rows="3"
+                                placeholder="Share your experience with this timepiece…" maxlength="500"></textarea>
+
+                            <div class="rv-form-actions">
+                                <button class="rv-btn-submit" id="rv-submit-btn">Submit Review</button>
+                                <button class="rv-btn-delete" id="rv-delete-btn" style="display:none;">Delete Review</button>
+                                <span class="rv-feedback" id="rv-feedback"></span>
+                            </div>
+                        </div>
+                        <!-- Not purchased / not logged in states -->
+                        <div id="review-gate" style="display:none;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="module" src="../js/navbar-inject.js"></script>
+    <script type="module" src="../js/navbar.js"></script>
+    <script type="module" src="../js/pages/product.js"></script>
+    <script type="module" src="../js/footer-inject.js"></script>
+</body>
+</html>
+
+
+
+

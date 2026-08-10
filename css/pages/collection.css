@@ -1,0 +1,518 @@
+/* collection.css — vars and font-faces declared globally in navbar.css / home.css */
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #fff;
+    color: var(--primary-dark);
+}
+
+main.container {
+    padding-bottom: 80px;
+}
+
+/* ══════════════════════════════════════════
+   HEADER
+══════════════════════════════════════════ */
+.collection-header {
+    padding: 80px 0 48px;
+    text-align: center;
+}
+
+.collection-eyebrow {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--rose-gold);
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.collection-title {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1em;
+    margin-bottom: 1.5rem;
+    line-height: 1.05;
+}
+
+.ct-serif {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: clamp(2.8rem, 6vw, 5rem);
+    color: var(--primary-dark);
+    display: block;
+}
+
+.ct-offbit {
+    font-family: 'OffBit', monospace;
+    font-size: clamp(1.6rem, 3.5vw, 3rem);
+    color: var(--primary-dark);
+    letter-spacing: -0.02em;
+    display: block;
+}
+
+.collection-header-line {
+    width: 48px;
+    height: 1px;
+    background: var(--rose-gold);
+    margin: 0 auto;
+}
+
+/* ══════════════════════════════════════════
+   FILTER BAR
+══════════════════════════════════════════ */
+.filter-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    margin-bottom: 3rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid #eee;
+    flex-wrap: wrap;
+}
+
+.filter-nav {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+    flex-wrap: wrap;
+}
+
+.filter-btn {
+    background: none;
+    border: none;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    padding: 0.45rem 1rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: background 0.2s ease, color 0.2s ease;
+    letter-spacing: 0.01em;
+}
+
+.filter-btn:hover {
+    color: var(--primary-dark);
+    background: rgba(0,0,0,0.04);
+}
+
+.filter-btn.active {
+    color: var(--primary-dark);
+    background: rgba(0,0,0,0.07);
+    font-weight: 600;
+}
+
+.price-select {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 0.45rem 1.25rem;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s ease;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='6' viewBox='0 0 10 6'%3E%3Cpath d='M1 1l4 4 4-4' stroke='%23999' stroke-width='1.5' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 0.9rem center;
+    padding-right: 2.2rem;
+}
+
+.price-select:focus {
+    border-color: var(--primary-dark);
+}
+
+/* ══════════════════════════════════════════
+   PRODUCT CARD — TWO-TONE
+══════════════════════════════════════════ */
+.product-card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    border-radius: 20px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.06);
+}
+
+/* ── Image zone (light) ── */
+.img-container {
+    position: relative;
+    background-color: var(--soft-cream);
+    height: 340px;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.165, 0.84, 0.44, 1);
+    display: block;
+}
+
+.product-card:hover .img-container img {
+    transform: scale(1.04);
+}
+
+/* ── Heart — top right of image ── */
+.btn-card-wishlist {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    z-index: 3;
+    background: rgba(255,255,255,0.75);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.6);
+    border-radius: 50%;
+    width: 34px;
+    height: 34px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: transform 0.2s cubic-bezier(0.34, 1.56, 0.64, 1),
+                background 0.2s ease;
+}
+
+.btn-card-wishlist:hover  { transform: scale(1.15); background: rgba(255,255,255,0.92); }
+.btn-card-wishlist:active { transform: scale(0.88); }
+
+.btn-card-wishlist .heart-icon {
+    width: 15px;
+    height: 15px;
+    color: #aaa;
+    transition: color 0.22s ease, fill 0.22s ease;
+}
+
+.btn-card-wishlist.wishlisted .heart-icon {
+    color: var(--rose-gold);
+    fill: var(--rose-gold);
+}
+
+/* ── Glass "View Details" button — slides up on hover ── */
+.card-glass-btn {
+    --bg-color:  rgba(255,255,255,0.10);
+    --highlight: rgba(255,255,255,0.35);
+
+    position: absolute;
+    bottom: 16px;
+    left: 50%;
+    transform: translateX(-50%) translateY(calc(100% + 20px));
+    width: calc(100% - 3rem);
+    padding: 11px 0;
+    border-radius: 50px;
+    overflow: hidden;
+    transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    z-index: 2;
+    text-align: center;
+    mix-blend-mode: difference;
+}
+
+.product-card:hover .card-glass-btn {
+    transform: translateX(-50%) translateY(0);
+}
+
+.card-glass-btn .glass-filter,
+.card-glass-btn .glass-overlay,
+.card-glass-btn .glass-specular {
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    pointer-events: none;
+}
+
+.card-glass-btn .glass-filter {
+    z-index: 1;
+    backdrop-filter: blur(4px);
+    filter: url(#glass-distortion) saturate(120%) brightness(1.1);
+}
+
+.card-glass-btn .glass-overlay {
+    z-index: 2;
+    background: var(--bg-color);
+    border: 1px solid rgba(255,255,255,0.18);
+}
+
+.card-glass-btn .glass-specular {
+    z-index: 3;
+    box-shadow: inset 1px 1px 1px var(--highlight);
+}
+
+.card-glass-btn .glass-content {
+    position: relative;
+    z-index: 4;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #fff;
+    letter-spacing: 0.04em;
+}
+
+/* ── Meta strip (dark) ── */
+.product-meta {
+    background: var(--primary-dark);
+    padding: 1.1rem 1.25rem 1.25rem;
+}
+
+.style-tag {
+    font-family: 'OffBit', monospace;
+    font-size: 0.6rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: var(--rose-gold);
+    display: block;
+    margin-bottom: 0.5rem;
+}
+
+.product-meta-row {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
+
+.product-title {
+    font-family: 'Lora', serif;
+    font-size: 1.1rem;
+    font-weight: 400;
+    color: #fff;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.product-price {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    font-weight: 400;
+    color: rgba(255,255,255,0.5);
+    margin: 0;
+    white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════
+   FADE IN
+══════════════════════════════════════════ */
+.fade-in {
+    animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(16px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ══════════════════════════════════════════
+   WOMEN'S OVERRIDES — same two-tone,
+   softer palette and rounder feel
+══════════════════════════════════════════ */
+body.women-page .img-container {
+    background-color: #fdf8f5;
+    height: 360px;
+}
+
+body.women-page .product-card {
+    border-radius: 24px;
+    border-color: rgba(229,179,163,0.15);
+}
+
+body.women-page .product-card:hover {
+    box-shadow: 0 24px 48px rgba(229,179,163,0.18);
+}
+
+/* Softer dark strip — deep warm charcoal instead of pure black */
+body.women-page .product-meta {
+    background: #1a1410;
+}
+
+/* Rose-gold price on women's */
+body.women-page .product-price {
+    color: var(--rose-gold);
+    opacity: 0.85;
+}
+
+/* Slightly larger title */
+body.women-page .product-title {
+    font-size: 1.15rem;
+    font-style: italic;
+}
+
+/* Glass button text on women's says "Discover" — keep same style */
+body.women-page .card-glass-btn .glass-content {
+    font-style: italic;
+    letter-spacing: 0.05em;
+}
+
+/* Filter bar — women's uses rose-gold active pill */
+body.women-page .filter-btn.active {
+    background: rgba(229,179,163,0.15);
+    color: var(--primary-dark);
+}
+
+/* ══════════════════════════════════════════
+   RESPONSIVE
+══════════════════════════════════════════ */
+@media (max-width: 991px) {
+    .filter-bar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.75rem;
+    }
+
+    .price-select {
+        align-self: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .collection-header {
+        padding: 60px 0 36px;
+    }
+
+    .ct-serif  { font-size: clamp(2.2rem, 9vw, 3rem); }
+    .ct-offbit { font-size: clamp(1.3rem, 5vw, 2rem); }
+
+    .img-container { height: 280px; }
+
+    body.women-page .img-container { height: 300px; }
+}
+
+/* ══════════════════════════════════════════
+   CUSTOM PRICE DROPDOWN
+══════════════════════════════════════════ */
+.price-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.price-dropdown__trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.8rem;
+    font-weight: 400;
+    color: var(--text-muted);
+    padding: 0.45rem 1.1rem 0.45rem 1.25rem;
+    border-radius: 50px;
+    border: 1px solid #ddd;
+    background: #fff;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.2s, color 0.2s, background 0.2s;
+    white-space: nowrap;
+    user-select: none;
+}
+
+.price-dropdown__trigger:hover {
+    border-color: var(--primary-dark);
+    color: var(--primary-dark);
+}
+
+.price-dropdown__trigger[aria-expanded="true"] {
+    border-color: var(--primary-dark);
+    color: var(--primary-dark);
+}
+
+.price-dropdown__chevron {
+    flex-shrink: 0;
+    transition: transform 0.22s ease;
+    color: currentColor;
+    opacity: 0.6;
+}
+
+.price-dropdown__trigger[aria-expanded="true"] .price-dropdown__chevron {
+    transform: rotate(180deg);
+}
+
+/* Menu */
+.price-dropdown__menu {
+    display: none;
+    position: absolute;
+    top: calc(100% + 6px);
+    right: 0;
+    min-width: 200px;
+    background: #fff;
+    border: 1px solid rgba(0,0,0,0.08);
+    border-radius: 14px;
+    padding: 0.4rem;
+    margin: 0;
+    list-style: none;
+    box-shadow: 0 8px 32px rgba(0,0,0,0.10), 0 2px 8px rgba(0,0,0,0.06);
+    z-index: 200;
+    animation: dropdown-in 0.18s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.price-dropdown__menu.price-dropdown__menu--open {
+    display: block;
+}
+
+@keyframes dropdown-in {
+    from { opacity: 0; transform: translateY(-6px) scale(0.97); }
+    to   { opacity: 1; transform: translateY(0)   scale(1); }
+}
+
+.price-dropdown__item {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem;
+    color: var(--text-muted);
+    padding: 0.55rem 0.9rem;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    white-space: nowrap;
+}
+
+.price-dropdown__item:hover {
+    background: rgba(0,0,0,0.04);
+    color: var(--primary-dark);
+}
+
+.price-dropdown__item--active {
+    color: var(--primary-dark);
+    font-weight: 500;
+    background: rgba(0,0,0,0.05);
+}
+
+/* ── Dark mode ── */
+body.dark .price-dropdown__trigger {
+    background: #1a1a1a;
+    border-color: rgba(255,255,255,0.12);
+    color: rgba(232,232,232,0.6);
+}
+
+body.dark .price-dropdown__trigger:hover,
+body.dark .price-dropdown__trigger[aria-expanded="true"] {
+    border-color: rgba(255,255,255,0.35);
+    color: #e8e8e8;
+}
+
+body.dark .price-dropdown__menu {
+    background: #1e1e1e;
+    border-color: rgba(255,255,255,0.1);
+    box-shadow: 0 8px 32px rgba(0,0,0,0.5), 0 2px 8px rgba(0,0,0,0.3);
+}
+
+body.dark .price-dropdown__item {
+    color: rgba(232,232,232,0.55);
+}
+
+body.dark .price-dropdown__item:hover {
+    background: rgba(255,255,255,0.06);
+    color: #e8e8e8;
+}
+
+body.dark .price-dropdown__item--active {
+    color: #e8e8e8;
+    background: rgba(255,255,255,0.08);
+}

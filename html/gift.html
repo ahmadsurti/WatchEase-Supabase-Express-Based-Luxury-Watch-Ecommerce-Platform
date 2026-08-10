@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gift a Timepiece | WatchEase</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Lora:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="../css/navbar.css">
+    <link rel="stylesheet" href="../css/pages/gift.css">
+    <link rel="stylesheet" href="../css/dark-mode.css">
+</head>
+<body>
+    <script>if(localStorage.getItem('we-theme')==='dark')document.body.classList.add('dark')</script>
+
+    <main class="gift-root container">
+
+        <!-- Back + header -->
+        <div class="gift-header">
+            <a href="#" class="gift-back" id="gift-back" aria-label="Back to product">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </a>
+            <div class="gift-header-text">
+                <p class="gift-eyebrow">Gift a Timepiece</p>
+                <h1 class="gift-title" id="gift-product-name">—</h1>
+                <p class="gift-subtitle">Fill in the recipient's details. You'll complete the purchase through your cart.</p>
+            </div>
+        </div>
+
+        <!-- Product preview strip -->
+        <div class="gift-preview" id="gift-preview">
+            <div class="gift-preview-img" id="gift-preview-img"></div>
+            <div class="gift-preview-info">
+                <span class="gift-preview-label">Gifting</span>
+                <span class="gift-preview-name" id="gift-preview-name">—</span>
+                <span class="gift-preview-price" id="gift-preview-price">—</span>
+            </div>
+        </div>
+
+        <!-- Form -->
+        <form class="gift-form" id="gift-form" novalidate>
+
+            <div class="gift-section-label">Recipient Details</div>
+
+            <div class="gf-row">
+                <div class="gf-group">
+                    <label for="gift-name">Recipient's Name</label>
+                    <input type="text" id="gift-name" placeholder="Full name" autocomplete="off">
+                </div>
+                <div class="gf-group">
+                    <label for="gift-email">Recipient's Email <span class="gf-optional">(for surprise teaser)</span></label>
+                    <input type="email" id="gift-email" placeholder="their@email.com" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="gf-group">
+                <label for="gift-line1">Address Line 1</label>
+                <input type="text" id="gift-line1" placeholder="House / Flat / Building" autocomplete="off">
+            </div>
+
+            <div class="gf-group">
+                <label for="gift-line2">Address Line 2 <span class="gf-optional">(optional)</span></label>
+                <input type="text" id="gift-line2" placeholder="Street / Area / Landmark" autocomplete="off">
+            </div>
+
+            <div class="gf-row gf-row--3">
+                <div class="gf-group">
+                    <label for="gift-city">City</label>
+                    <input type="text" id="gift-city" placeholder="Mumbai" autocomplete="off">
+                </div>
+                <div class="gf-group">
+                    <label for="gift-state">State</label>
+                    <input type="text" id="gift-state" placeholder="Maharashtra" autocomplete="off">
+                </div>
+                <div class="gf-group">
+                    <label for="gift-pin">PIN Code</label>
+                    <input type="text" id="gift-pin" placeholder="400001" maxlength="6" autocomplete="off">
+                </div>
+            </div>
+
+            <div class="gf-group">
+                <label for="gift-note">Gift Note <span class="gf-optional">(optional — added to the gift box)</span></label>
+                <textarea id="gift-note" rows="3" placeholder="Write something heartfelt…" maxlength="300"></textarea>
+            </div>
+
+            <!-- Teaser email checkbox -->
+            <label class="gift-teaser-check" id="teaser-label">
+                <input type="checkbox" id="gift-teaser" checked>
+                <span class="gift-check-box" aria-hidden="true">
+                    <svg width="11" height="9" viewBox="0 0 11 9" fill="none">
+                        <polyline points="1,4.5 4,7.5 10,1" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+                <span class="gift-check-text">
+                    Send them a surprise teaser email — they'll know something special is coming, but not what.
+                </span>
+            </label>
+
+            <div class="gf-actions">
+                <button type="submit" class="gf-btn-submit" id="gift-submit-btn">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+                    </svg>
+                    Add Gift to Cart
+                </button>
+                <span class="gf-feedback" id="gf-feedback"></span>
+            </div>
+
+        </form>
+
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+    <script type="module" src="../js/navbar-inject.js"></script>
+    <script type="module" src="../js/navbar.js"></script>
+    <script type="module" src="../js/pages/gift.js"></script>
+</body>
+</html>
+
+
+
+

@@ -1,0 +1,277 @@
+/* style.css — index.html only; base vars and layout.
+   Global resets (scrollbar, selection, img drag) live in navbar.css. */
+
+:root {
+    --primary-dark: #121212;
+    --off-white: #f8f9fa;
+    --card-bg: #f3f3f3;
+    --text-muted: #666666;
+    --rose-gold: #e5b3a3;
+    --transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background-color: #ffffff;
+    color: var(--primary-dark);
+    overflow-x: hidden;
+}
+
+h1, h2, h3, .serif {
+    font-family: 'Lora', serif;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    color: #fff;
+    position: relative;
+    overflow: hidden;
+}
+
+.hero-video {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    min-width: 100%;
+    min-height: 100%;
+    width: auto;
+    height: auto;
+    transform: translate(-50%, -50%);
+    z-index: 0;
+    object-fit: cover;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(0,0,0,0.75) 30%, rgba(0,0,0,0.3) 100%);
+    z-index: 1;
+}
+
+.hero .container {
+    position: relative;
+    z-index: 2;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 4.5rem);
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+}
+
+.hero p {
+    font-size: 1.1rem;
+    color: rgba(255,255,255,0.7);
+    margin-bottom: 2.5rem;
+    font-weight: 300;
+}
+
+.btn-explore {
+    background: #fff;
+    color: var(--primary-dark);
+    padding: 1rem 2.5rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 500;
+    display: inline-block;
+    transition: var(--transition);
+}
+
+.btn-explore:hover {
+}
+
+.hero-stats {
+    margin-top: 4rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.avatar-group {
+    display: flex;
+}
+
+.avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    border: 2px solid var(--primary-dark);
+    margin-left: -12px;
+    background: #444;
+}
+
+.avatar:first-child { margin-left: 0; }
+
+.section-padding {
+    padding: 100px 0;
+}
+
+.section-title {
+    text-align: center;
+    margin-bottom: 4rem;
+}
+
+.section-title h2 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.watch-card {
+    background-color: var(--card-bg);
+    border-radius: 24px;
+    padding: 2rem;
+    text-align: center;
+    transition: var(--transition);
+    border: 1px solid transparent;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    color: var(--primary-dark);
+}
+
+.watch-card:hover {
+    transform: translateY(-10px);
+    background-color: #fff;
+    border-color: #eee;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.product-card {
+    border: none;
+    background: none;
+    cursor: pointer;
+    text-align: left;
+    margin-bottom: 3rem;
+    transition: var(--transition);
+    text-decoration: none;
+    color: inherit;
+}
+
+.img-container {
+    background-color: var(--card-bg);
+    border-radius: 20px;
+    height: 400px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+    transition: var(--transition);
+    position: relative;
+}
+
+.img-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: var(--transition);
+}
+
+.product-card:hover .img-container {
+    background-color: #f0f0f0;
+    transform: translateY(-8px);
+}
+
+.product-card:hover .img-container img {
+    transform: scale(1.05);
+}
+
+.view-details {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%) translateY(20px);
+    opacity: 0;
+    background: var(--primary-dark);
+    color: #fff;
+    padding: 0.6rem 1.5rem;
+    border-radius: 50px;
+    font-size: 0.8rem;
+    transition: var(--transition);
+}
+
+.product-card:hover .view-details {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+
+.product-meta {
+    padding-left: 0.5rem;
+}
+
+.style-tag {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.product-title {
+    font-family: 'Lora', serif;
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+}
+
+.product-price {
+    font-weight: 500;
+    color: var(--primary-dark);
+}
+
+.watch-img-wrapper {
+    height: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1.5rem;
+}
+
+.watch-img-wrapper svg {
+    max-height: 100%;
+    filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));
+}
+
+.badge-new {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 0.5rem;
+    display: block;
+}
+
+.watch-name {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 0.25rem;
+}
+
+.watch-model {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+}
+
+.watch-price {
+    font-weight: 500;
+    font-size: 1.1rem;
+}
+
+.grid-item {
+    background: var(--card-bg);
+    border-radius: 20px;
+    padding: 2rem;
+    overflow: hidden;
+    position: relative;
+}

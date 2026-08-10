@@ -1,0 +1,22 @@
+{
+  "name": "watchease",
+  "version": "1.0.0",
+  "description": "A sophisticated luxury watch e-commerce application built with vanilla HTML, CSS, JavaScript, and Bootstrap with localStorage-based authentication.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node js/server.js",
+    "dev": "node js/server.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "2.8.6",
+    "dotenv": "17.4.2",
+    "express": "5.2.1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1",
+    "serve": "^14.2.6"
+  }
+}
