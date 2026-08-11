@@ -8,6 +8,8 @@
 [![Brevo](https://img.shields.io/badge/Brevo-Transactional%20Email-0092FF?logo=brevo&logoColor=white)](https://www.brevo.com/)
 [![Vercel](https://img.shields.io/badge/Vercel-Serverless-000000?logo=vercel&logoColor=white)](https://vercel.com/)
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](LICENSE)
+![Alt](https://repobeats.axiom.co/api/embed/be0482a028a1dfd860cc3c4d86346685b73000ec.svg "Repobeats analytics image")
+
 
 A luxury watch e-commerce platform featuring liquid glass UI design, client-side Supabase authentication, real-time database cart & wishlist sync, Row Level Security (RLS), and automated transactional email dispatch powered by Brevo and Vercel Serverless Functions.
 
